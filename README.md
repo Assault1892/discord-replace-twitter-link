@@ -8,6 +8,8 @@
 
 Twitter の URL (`twitter.com`, `x.com`) を[FixTweet](https://github.com/FixTweet/FixTweet)の URL (`fxtwitter.com`) に置き換える Bot です。
 
+![Preview](https://github.com/Assault1892/discord-replace-twitter-link/assets/34514603/7afdd4cb-0d23-4f29-947f-043448c39f2f)
+
 ## つかいかた
 
 ここから自分のサーバーに入れてください  
