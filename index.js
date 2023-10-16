@@ -32,7 +32,7 @@ client.on(Events.MessageCreate, message => {
   }
 
   if (message.content.includes("https://twitter.com"|"https://x.com")) {
-
+    try {
     m = message.content.replace(/https:\/\/x.com/g, "https://twitter.com");
     // console.log(`[${currentTime}] Twitter URL found: ${m}`)
     alignedConsoleLog(`[${currentTime}] Twitter URL found: ${m}`, 42);
@@ -48,23 +48,13 @@ client.on(Events.MessageCreate, message => {
 
     message.reply({content: "found Twitter link(s)! replaced urls...:\n" + frtssrm, allowedMentions: { repliedUser: false }});
     console.log(`[${currentTime}] Replied to ${message.author.tag} (${message.author.id})` + "\n");
+    } catch (error) {
+      console.error(error);
+      message.reply({content: "an error has occured! please contact to developer.", allowedMentions: { repliedUser: false }});
+    }
   }
 
-  // if (message.content.includes("https://x.com")) {
-
-  //   xm = message.content;
-  //   console.log(`[${currentTime}] X URL found: ${xm}`)
-  //   rxm = xm.replace(/x.com/g, "fixupx.com");
-  //   console.log(`[${currentTime}] Replaced to fixupx.com: ${rxm}`);
-  //   srxm = rxm.match(/https:\/\/fixupx.com\/[a-zA-Z0-9_]*\/status\/[0-9]*/g);
-  //   console.log(`[${currentTime}] Replaced Message preview: ${srxm}`);
-
-  //   tssxrm = srxm.toString();
-  //   frtssxrm = tssxrm.replace(/,/g, "\n");
-
-  //   message.reply({content: "found X link(s)! replaced urls...:\n" + frtssxrm, allowedMentions: { repliedUser: false }});
-  //   console.log(`[${currentTime}] Replied to ${message.author.tag}`)
-  // }
+  
 
 } )
 
