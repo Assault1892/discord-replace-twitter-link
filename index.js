@@ -1,11 +1,10 @@
 const { Client, Events, GatewayIntentBits } = require('discord.js');
 const { token } = require('./config.json');
-// require ('date-utils');
+const { DateTime } = require('luxon');
 
 const client = new Client({ intents: [ GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages ]})
-// const date = new Date();
-// const currentTime = date.toFormat("YYYY/MM/DD HH24:MI:SS");
-const currentTime = "temporally disabled";
+
+const currentTime = DateTime.now().toFormat("yyyy-MM-dd HH:mm:ss");
 
 client.once(Events.ClientReady, c => {
   console.log("--------------------");
