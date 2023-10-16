@@ -21,7 +21,7 @@ client.on(Events.MessageCreate, message => {
 
   if (message.content.includes("https://twitter.com/")) {
     var messageContent = message.content;
-    var replacedMessage = messageContent.replace("https://twitter.com/", "https://fixtwitter.com");
+    var replacedMessage = messageContent.replace("https://twitter.com/", "https://fxtwitter.com/");
     message.channel.send(replacedMessage);
   }
 } )
