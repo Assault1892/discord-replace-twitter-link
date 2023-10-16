@@ -10,7 +10,8 @@ Twitter の URL (`twitter.com`, `x.com`) を[FixTweet](https://github.com/FixTwe
 
 ## つかいかた
 
-ここから自分のサーバーに入れてください　**Bot が見えないチャンネルでのメッセージは取得できません** 気を付けてね  
+ここから自分のサーバーに入れてください  
+**Bot が見えないチャンネルでのメッセージは取得できません** 気を付けてね  
 https://discord.com/api/oauth2/authorize?client_id=1163327448910401566&permissions=19456&scope=bot
 
 ## セルフホストしたいんだけど
@@ -35,5 +36,5 @@ https://discord.com/api/oauth2/authorize?client_id=1163327448910401566&permissio
 なんかあったら**必ず Node.js と discord.js のバージョンを添えて**Issue 立てるか[私の Discord サーバー](https://discord.gg/XprScgmYna)に入って教えてください  
 やる気がある時に直します
 
-開発環境: Windows 10 22H2, Node.js 20.7.0, discord.js 14.13.0
+開発環境: Windows 10 22H2, Node.js 20.7.0, discord.js 14.13.0  
 サーバー: Raspberry Pi 4, Ubuntu 22.04.3, Node.js 20.7.0
