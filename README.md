@@ -1,9 +1,9 @@
 # discord-replace-twitter-link
 
 <p>
-<img alt="Static Badge" src="https://img.shields.io/badge/add%20your%20server-darkgreen?style=for-the-badge&logo=discord&logoColor=white&link=https%3A%2F%2Fdiscord.com%2Fapi%2Foauth2%2Fauthorize%3Fclient_id%3D1163327448910401566%26permissions%3D19456%26scope%3Dbot">
-<img alt="Static Badge" src="https://img.shields.io/badge/join%20support%20server-blue?style=for-the-badge&logo=discord&logoColor=white&link=https%3A%2F%2Fdiscord.gg%2FXprScgmYna">
-<img alt="Static Badge" src="https://img.shields.io/badge/discord.js-gray?style=for-the-badge&logo=node.js&link=https%3A%2F%2Fdiscord.com%2Fapi%2Foauth2%2Fauthorize%3Fclient_id%3D1163327448910401566%26permissions%3D19456%26scope%3Dbot">
+<a href="https%3A%2F%2Fdiscord.com%2Fapi%2Foauth2%2Fauthorize%3Fclient_id%3D1163327448910401566%26permissions%3D19456%26scope%3Dbot"><img src="https://img.shields.io/badge/add%20your%20server-darkgreen?style=for-the-badge&logo=discord&logoColor=white">
+<a href="https%3A%2F%2Fdiscord.gg%2FXprScgmYna"><img src="https://img.shields.io/badge/join%20support%20server-blue?style=for-the-badge&logo=discord&logoColor=white">
+<img alt="Static Badge" src="https://img.shields.io/badge/discord.js-gray?style=for-the-badge&logo=node.js">
 </p>
 
 Twitter の URL (`twitter.com`, `x.com`) を[FixTweet](https://github.com/FixTweet/FixTweet)の URL (`fxtwitter.com`) に置き換える Bot です。
