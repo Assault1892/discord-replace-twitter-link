@@ -19,10 +19,15 @@ client.on(Events.MessageCreate, message => {
     message.channel.send("aaa");
   }
 
-  if (message.content.includes("twitter.com")) {
-    messageContent = message.content;
-    replacedMessage = messageContent.replace(/twitter.com/g, "fxtwitter.com");
-    message.channel.send(replacedMessage);
+  if (message.content.includes("https://twitter.com")) {
+
+    m = message.content;
+    rm = m.replace(/twitter.com/g, "fxtwitter.com");
+    console.log(rm)
+
+    // messageContent = message.content;
+    // replacedMessage = messageContent.replace(/twitter.com/g, "fxtwitter.com");
+    // message.channel.send(replacedMessage);
   }
 } )
 
