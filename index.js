@@ -32,7 +32,7 @@ async function sendReplacedURL(message, rm) {
     });
   } else {
       try {
-        message.reply({content: `[${currentTime}] og sender: ${message.member.displayName} (${message.author.id})\n${rm}`, allowedMentions: { repliedUser: false }})
+        message.channel.send({content: `[${currentTime}] og sender: ${message.member.displayName} (${message.author.id})\n${rm}`, allowedMentions: { repliedUser: false }})
         } catch {
           console.log("an error has occured! please contact to developer.\n" + "error: cannot reply to thread.");
         }
