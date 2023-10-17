@@ -2,7 +2,7 @@ const { Client, Events, GatewayIntentBits } = require('discord.js');
 const { token } = require('./config.json');
 const { DateTime } = require('luxon');
 
-const client = new Client({ intents: [ GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages ]})
+const client = new Client({ intents: [ GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildWebhooks ]})
 const currentTime = DateTime.now().toFormat("yyyy-MM-dd HH:mm:ss");
 
 function alignedConsoleLog(message, width) {
@@ -28,6 +28,10 @@ client.on(Events.MessageCreate, message => {
     return;
   }
 
+  if (message.webhookId) {
+    return;
+  }
+
   if (message.content.match( /https\:\/\/[x|twitter]*.com/ )) {
     try {
     m = message.content.replace(/https:\/\/x.com/g, "https://twitter.com");
@@ -43,6 +47,8 @@ client.on(Events.MessageCreate, message => {
     tssrm = srm.toString();
     frtssrm = tssrm.replace(/,/g, "\n");
     alignedConsoleLog(`[${currentTime}] Replaced links preview: ${frtssrm}`, 47);
+
+    
 
     message.reply({content: "found Twitter link(s)! replaced urls...:\n" + frtssrm, allowedMentions: { repliedUser: false }});
     console.log(`[${currentTime}] Replied to ${message.author.tag} (${message.author.id})` + "\n");
