@@ -4,6 +4,7 @@ const { DateTime } = require('luxon');
 
 const client = new Client({ intents: [ GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildWebhooks ]})
 const currentTime = DateTime.now().toFormat("yyyy-MM-dd HH:mm:ss");
+const webhooksCache = new Map();
 
 function alignedConsoleLog(message, width) {
   const lines = message.split('\n');
@@ -13,6 +14,32 @@ function alignedConsoleLog(message, width) {
       const padding = ' '.repeat(Math.max(0, width - 1));
       console.log(padding + lines[i]);
   }
+}
+
+async function sendReplacedURL(message, rm) {
+  const dispName = message.member.displayName;
+  const avatarURL = message.author.avatarURL({ dynamic: true });
+  const webhook = await getWebhookInChannel(message.channel);
+
+  webhook.send({
+    content: rm,
+    username: dispName,
+    avatarURL: avatarURL
+  }).catch (error => {
+    console.log(error);
+  });
+}
+
+async function getWebhookInChannel(channel) {
+  const webhook = webhooksCache.get(channel.id) ?? await getWebhook(channel);
+  return webhook;
+}
+
+async function getWebhook(channel) {
+  const webhooks = await channel.fetchWebhooks();
+  const webhook = webhooks.find( (v) => v.token ) ?? await channel.createWebhook({ name: "Twitter URL Replacer" });
+  if (webhook) webhooksCache.set(channel.id, webhook);
+  return webhook;
 }
 
 client.once(Events.ClientReady, c => {
@@ -32,7 +59,7 @@ client.on(Events.MessageCreate, message => {
     return;
   }
 
-  if (message.content.match( /https\:\/\/[x|twitter]*.com/ )) {
+  if (message.content.match( /https\:\/\/[x|twitter]*.com\/[a-zA-Z0-9_]*\/status\/[0-9]*/ )) {
     try {
     m = message.content.replace(/https:\/\/x.com/g, "https://twitter.com");
 
@@ -41,16 +68,16 @@ client.on(Events.MessageCreate, message => {
     rm = m.replace(/twitter.com/g, "fxtwitter.com");
     // console.log(`[${currentTime}] Replaced to fxtwitter.com: ${rm}`);
     alignedConsoleLog(`[${currentTime}] Replaced to fxtwitter.com: ${rm}`, 50);
-    srm = rm.match(/https:\/\/fxtwitter.com\/[a-zA-Z0-9_]*\/status\/[0-9]*/g);
+    // srm = rm.match(/https:\/\/fxtwitter.com\/[a-zA-Z0-9_]*\/status\/[0-9]*/g);
     // console.log(`[${currentTime}] Replaced links: ${srm}`);
 
-    tssrm = srm.toString();
-    frtssrm = tssrm.replace(/,/g, "\n");
-    alignedConsoleLog(`[${currentTime}] Replaced links preview: ${frtssrm}`, 47);
+    // tssrm = srm.toString();
+    // frtssrm = tssrm.replace(/,/g, "\n");
+    // alignedConsoleLog(`[${currentTime}] Replaced links preview: ${frtssrm}`, 47);
 
-    
-
-    message.reply({content: "found Twitter link(s)! replaced urls...:\n" + frtssrm, allowedMentions: { repliedUser: false }});
+    // message.reply({content: "found Twitter link(s)! replaced urls...:\n" + frtssrm, allowedMentions: { repliedUser: false }});
+    sendReplacedURL(message, rm);
+    message.delete(message)
     console.log(`[${currentTime}] Replied to ${message.author.tag} (${message.author.id})` + "\n");
     } catch (error) {
       console.error(error);
