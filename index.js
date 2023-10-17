@@ -28,6 +28,8 @@ async function sendReplacedURL(message, rm) {
   }).catch (error => {
     console.log(error);
   });
+
+  message.delete(message);
 }
 
 async function getWebhookInChannel(channel) {
@@ -77,7 +79,6 @@ client.on(Events.MessageCreate, message => {
 
     // message.reply({content: "found Twitter link(s)! replaced urls...:\n" + frtssrm, allowedMentions: { repliedUser: false }});
     sendReplacedURL(message, rm);
-    message.delete(message)
     console.log(`[${currentTime}] Replied to ${message.author.tag} (${message.author.id})` + "\n");
     } catch (error) {
       console.error(error);
