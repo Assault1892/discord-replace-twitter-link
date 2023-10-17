@@ -17,19 +17,25 @@ function alignedConsoleLog(message, width) {
 }
 
 async function sendReplacedURL(message, rm) {
-  const dispName = message.member.displayName;
-  const avatarURL = message.author.avatarURL({ dynamic: true });
-  const webhook = await getWebhookInChannel(message.channel);
+  
+  try {
+  if (message.channel.isThread() != true) {
+    const dispName = message.member.displayName;
+    const avatarURL = message.author.avatarURL({ dynamic: true });
+    const webhook = await getWebhookInChannel(message.channel);
+    webhook.send({
+      content: rm,
+      username: dispName,
+      avatarURL: avatarURL
+    }).catch (error => {
+      console.log(error);
+    });
+  } else {
+      message.reply({content: `[${currentTime}] og sender: ${message.member.displayName} (${message.author.id})\n${rm}`, allowedMentions: { repliedUser: false }})
+  } } catch {
+    message.channel.send("an error has occured! please contact to developer.");
+  }
 
-  webhook.send({
-    content: rm,
-    username: dispName,
-    avatarURL: avatarURL
-  }).catch (error => {
-    console.log(error);
-  });
-
-  message.delete(message);
 }
 
 async function getWebhookInChannel(channel) {
@@ -70,16 +76,19 @@ client.on(Events.MessageCreate, message => {
     rm = m.replace(/twitter.com/g, "fxtwitter.com");
     // console.log(`[${currentTime}] Replaced to fxtwitter.com: ${rm}`);
     alignedConsoleLog(`[${currentTime}] Replaced to fxtwitter.com: ${rm}`, 50);
-    // srm = rm.match(/https:\/\/fxtwitter.com\/[a-zA-Z0-9_]*\/status\/[0-9]*/g);
-    // console.log(`[${currentTime}] Replaced links: ${srm}`);
 
+    // srm = rm.match(/https:\/\/fxtwitter.com\/[a-zA-Z0-9_]*\/status\/[0-9]*/g);
+    // alignedConsoleLog(`[${currentTime}] Replaced links: ${srm}`, 50);
     // tssrm = srm.toString();
     // frtssrm = tssrm.replace(/,/g, "\n");
     // alignedConsoleLog(`[${currentTime}] Replaced links preview: ${frtssrm}`, 47);
-
     // message.reply({content: "found Twitter link(s)! replaced urls...:\n" + frtssrm, allowedMentions: { repliedUser: false }});
+
     sendReplacedURL(message, rm);
     console.log(`[${currentTime}] Replied to ${message.author.tag} (${message.author.id})` + "\n");
+
+    message.delete();
+
     } catch (error) {
       console.error(error);
       message.reply({content: "an error has occured! please contact to developer.", allowedMentions: { repliedUser: false }});
