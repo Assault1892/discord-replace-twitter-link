@@ -1,7 +1,7 @@
 # discord-replace-twitter-link
 
 <p>
-<a href="https://discord.com/oauth2/authorize?client_id=1163327448910401566&permissions=19456&scope=bot"><img src="https://img.shields.io/badge/add%20your%20server-darkgreen?style=for-the-badge&logo=discord&logoColor=white">
+<a href="https://discord.com/api/oauth2/authorize?client_id=1163784428569501696&permissions=536880128&scope=bot"><img src="https://img.shields.io/badge/add%20your%20server-darkgreen?style=for-the-badge&logo=discord&logoColor=white">
 <a href="https://discord.gg/XprScgmYna"><img src="https://img.shields.io/badge/join%20support%20server-blue?style=for-the-badge&logo=discord&logoColor=white">
 <a href="https://discord.js.org"><img alt="Static Badge" src="https://img.shields.io/badge/discord.js-gray?style=for-the-badge&logo=node.js">
 </p>
@@ -14,7 +14,7 @@ Twitter の URL (`twitter.com`, `x.com`) を[FixTweet](https://github.com/FixTwe
 
 ここから自分のサーバーに入れてください  
 **Bot が見えないチャンネルでのメッセージは取得できません** 気を付けてね  
-https://discord.com/api/oauth2/authorize?client_id=1163327448910401566&permissions=19456&scope=bot
+https://discord.com/api/oauth2/authorize?client_id=1163784428569501696&permissions=536880128&scope=bot
 
 ## セルフホストしたいんだけど
 
