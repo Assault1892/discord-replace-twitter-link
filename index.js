@@ -23,17 +23,15 @@ client.once(Events.ClientReady, c => {
 });
 
 client.on(Events.MessageCreate, message => {
+
   if (message.author.bot) {
     return;
   }
 
-  if (message.content.startsWith("test")) {
-    message.channel.send("aaa");
-  }
-
-  if (message.content.includes("https://twitter.com"|"https://x.com")) {
+  if (message.content.match( /https\:\/\/[x|twitter]*.com/ )) {
     try {
     m = message.content.replace(/https:\/\/x.com/g, "https://twitter.com");
+
     // console.log(`[${currentTime}] Twitter URL found: ${m}`)
     alignedConsoleLog(`[${currentTime}] Twitter URL found: ${m}`, 42);
     rm = m.replace(/twitter.com/g, "fxtwitter.com");
@@ -53,8 +51,6 @@ client.on(Events.MessageCreate, message => {
       message.reply({content: "an error has occured! please contact to developer.", allowedMentions: { repliedUser: false }});
     }
   }
-
-  
 
 } )
 
