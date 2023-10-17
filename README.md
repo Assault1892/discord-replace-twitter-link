@@ -20,17 +20,17 @@ https://discord.com/api/oauth2/authorize?client_id=1163327448910401566&permissio
 
 1. `git clone` します
 2. `npm i` します
-3. `config.json.samples` を `config.json` にリネームします
+3. `config.json.sample` を `config.json` にリネームします
 4. `config.json` の中にある `token` に Bot の Token を入れます
 5. `pm2 start index.js` します
 6. おわり
 
 ### 更新したいんだけど
 
-1. `pm2 stop 0` します (もしかしたら番号ちがうかも `pm2 ps` して確認してね)
+1. `pm2 stop x` します (`pm2 ps` して ID 確認してね)
 2. `git pull` します
 3. `npm i` します
-4. `pm2 start 0` します (番号ちがうかも 同上)
+4. `pm2 start x` します
 5. おわり
 
 ## なんか壊れたんだけど助けて
