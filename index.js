@@ -31,10 +31,16 @@ async function sendReplacedURL(message, rm) {
       console.log(error);
     });
   } else {
-      message.reply({content: `[${currentTime}] og sender: ${message.member.displayName} (${message.author.id})\n${rm}`, allowedMentions: { repliedUser: false }})
+      try {
+        message.reply({content: `[${currentTime}] og sender: ${message.member.displayName} (${message.author.id})\n${rm}`, allowedMentions: { repliedUser: false }})
+        } catch {
+          console.log("an error has occured! please contact to developer.\n" + "error: cannot reply to thread.");
+        }
   } } catch {
-    message.channel.send("an error has occured! please contact to developer.");
+    message.channel.send("an error has occured! please contact to developer.\n" + "error: unknown error 1.");
   }
+
+  message.delete(message);
 
 }
 
@@ -87,11 +93,9 @@ client.on(Events.MessageCreate, message => {
     sendReplacedURL(message, rm);
     console.log(`[${currentTime}] Replied to ${message.author.tag} (${message.author.id})` + "\n");
 
-    message.delete();
-
     } catch (error) {
       console.error(error);
-      message.reply({content: "an error has occured! please contact to developer.", allowedMentions: { repliedUser: false }});
+      message.reply({content: "an error has occured! please contact to developer.\n" + "unknown error 2.", allowedMentions: { repliedUser: false }});
     }
   }
 
