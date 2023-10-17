@@ -1,4 +1,4 @@
-# discord-replace-twitter-link
+# Discord Twitter Link Replacer
 
 <p>
 <a href="https://discord.com/api/oauth2/authorize?client_id=1163327448910401566&permissions=536880128&scope=bot"><img src="https://img.shields.io/badge/add%20your%20server-darkgreen?style=for-the-badge&logo=discord&logoColor=white">
