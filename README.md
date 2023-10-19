@@ -1,7 +1,7 @@
 # Discord Twitter Link Replacer
 
 <p>
-<a href="https://discord.com/api/oauth2/authorize?client_id=1163327448910401566&permissions=536880128&scope=bot"><img src="https://img.shields.io/badge/add%20your%20server-darkgreen?style=for-the-badge&logo=discord&logoColor=white">
+<a href="https://discord.com/api/oauth2/authorize?client_id=1163327448910401566&permissions=536882176&scope=bot"><img src="https://img.shields.io/badge/add%20your%20server-darkgreen?style=for-the-badge&logo=discord&logoColor=white">
 <a href="https://discord.gg/XprScgmYna"><img src="https://img.shields.io/badge/join%20support%20server-blue?style=for-the-badge&logo=discord&logoColor=white">
 <a href="https://discord.js.org"><img alt="Static Badge" src="https://img.shields.io/badge/discord.js-gray?style=for-the-badge&logo=node.js">
 </p>
@@ -10,28 +10,34 @@ Twitter の URL (`twitter.com`, `x.com`) を[FixTweet](https://github.com/FixTwe
 
 https://github.com/Assault1892/discord-replace-twitter-link/assets/34514603/bc8112f9-5e29-45ef-b0a3-3f812006d981
 
+**2023/10/19 現在、スレッド内で URL の置き換えが動かない場合は Bot の再導入をお願いします。導入用 URL の権限設定ミスをしていました...。**
+
 ## つかいかた
 
 ここから自分のサーバーに入れてください  
 **Bot が見えないチャンネルでのメッセージは取得できません** 気を付けてね  
-https://discord.com/api/oauth2/authorize?client_id=1163327448910401566&permissions=536880128&scope=bot
+また Bot の権限より上の権限で制御されているチャンネルなどでは動作しません お手数をおかけしますが Bot 専用の権限を割り当てるなどお願いします  
+https://discord.com/api/oauth2/authorize?client_id=1163327448910401566&permissions=536882176&scope=bot
 
 ## セルフホストしたいんだけど
+
+`Manage Webhooks`, `Read Messages/View Channels`, `Send Messages`, `Manage Messages` の権限が与えられないと動きません
 
 1. `git clone` します
 2. `npm i` します
 3. `config.json.sample` を `config.json` にリネームします
 4. `config.json` の中にある `token` に Bot の Token を入れます
-5. `pm2 start index.js` します
+5. `node .` します
 6. おわり
+
+お好みで `pm2` とか使ってデーモン化してみてもいいとおもいます
 
 ### 更新したいんだけど
 
-1. `pm2 stop x` します (`pm2 ps` して ID 確認してね)
-2. `git pull` します
-3. `npm i` します
-4. `pm2 start x` します
-5. おわり
+1. `git pull` します
+2. `npm i` します
+3. `node .` します
+4. おわり
 
 ## なんか壊れたんだけど助けて
 
