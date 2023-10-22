@@ -29,7 +29,7 @@ https://discord.com/api/oauth2/authorize?client_id=1163327448910401566&permissio
 2. `npm i` します
 3. `config.json.sample` を `config.json` にリネームします
 4. `config.json` の中にある `token` に Bot の Token を入れます
-5. `node .` します
+5. `npm start` します
 6. おわり
 
 お好みで `pm2` とか使ってデーモン化してみてもいいとおもいます
@@ -38,7 +38,7 @@ https://discord.com/api/oauth2/authorize?client_id=1163327448910401566&permissio
 
 1. `git pull` します
 2. `npm i` します
-3. `node .` します
+3. `npm start` します
 4. おわり
 
 ## なんか壊れたんだけど助けて
