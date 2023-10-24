@@ -32,7 +32,7 @@ https://discord.com/api/oauth2/authorize?client_id=1163327448910401566&permissio
 5. `npm start` します
 6. おわり
 
-お好みで `pm2` とか使ってデーモン化してみてもいいとおもいます
+お好みで `$ pm2 start npm --name dtlr -- start ` とかでデーモン化してみてもいいとおもいます
 
 ### 更新したいんだけど
 
