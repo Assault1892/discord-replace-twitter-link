@@ -1,5 +1,5 @@
 const { Client, Events, GatewayIntentBits } = require('discord.js');
-const { token } = require('./config.json');
+const { token } = require('./../config.json');
 const { DateTime } = require('luxon');
 
 const client = new Client({
