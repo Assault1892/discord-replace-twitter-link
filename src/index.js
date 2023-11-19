@@ -84,6 +84,11 @@ client.once(Events.ClientReady, (c) => {
 });
 
 client.on(Events.MessageCreate, (message) => {
+/*
+  if (!message.guild || !['123456789012345678', '123456789012345678'].includes(message.guild.id)) {
+    return;
+  }
+*/
   if (message.author.bot) {
     return;
   }
