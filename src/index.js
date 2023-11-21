@@ -24,16 +24,16 @@ function alignedConsoleLog(message, width) {
   }
 }
 
-async function sendReplacedURL(message, rm) {
+const sendReplacedURL = async (message, rm) => {
   try {
-    if (message.channel.isThread() != true) {
-      const dispName = message.member.displayName;
+    if (message.channel.isThread() !== true) {
+      const displayName = message.member.displayName;
       const avatarURL = message.author.avatarURL({ dynamic: true });
       const webhook = await getWebhookInChannel(message.channel);
       webhook
           .send({
             content: rm,
-            username: dispName,
+            username: displayName,
             avatarURL: avatarURL,
           })
           .catch((error) => {
@@ -60,7 +60,7 @@ async function sendReplacedURL(message, rm) {
   }
 
   message.delete(message);
-}
+};
 
 async function getWebhookInChannel(channel) {
   const webhook = webhooksCache.get(channel.id) ?? (await getWebhook(channel));
