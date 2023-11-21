@@ -1,5 +1,5 @@
 const { Client, Events, GatewayIntentBits } = require('discord.js');
-const { token, serverId, whitelist } = require('./../config.json');
+const { token, guildID, whitelist } = require('./../config.json');
 const { DateTime } = require('luxon');
 
 const client = new Client({
@@ -31,14 +31,14 @@ async function sendReplacedURL(message, rm) {
       const avatarURL = message.author.avatarURL({ dynamic: true });
       const webhook = await getWebhookInChannel(message.channel);
       webhook
-        .send({
-          content: rm,
-          username: dispName,
-          avatarURL: avatarURL,
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+          .send({
+            content: rm,
+            username: dispName,
+            avatarURL: avatarURL,
+          })
+          .catch((error) => {
+            console.log(error);
+          });
     } else {
       try {
         message.channel.send({
@@ -47,14 +47,14 @@ async function sendReplacedURL(message, rm) {
         });
       } catch {
         console.log(
-          'an error has occured! please contact to developer.\n' +
+            'an error has occured! please contact to developer.\n' +
             'error: cannot reply to thread.',
         );
       }
     }
   } catch {
     message.channel.send(
-      'an error has occured! please contact to developer.\n' +
+        'an error has occured! please contact to developer.\n' +
         'error: unknown error 1.',
     );
   }
@@ -70,8 +70,8 @@ async function getWebhookInChannel(channel) {
 async function getWebhook(channel) {
   const webhooks = await channel.fetchWebhooks();
   const webhook =
-    webhooks.find((v) => v.token) ??
-    (await channel.createWebhook({ name: 'Twitter URL Replacer' }));
+      webhooks.find((v) => v.token) ??
+      (await channel.createWebhook({ name: 'Twitter URL Replacer' }));
   if (webhook) webhooksCache.set(channel.id, webhook);
   return webhook;
 }
@@ -84,9 +84,10 @@ client.once(Events.ClientReady, (c) => {
 });
 
 client.on(Events.MessageCreate, (message) => {
-  if (whitelist && (!message.guild || !guildIDs.includes(message.guild.id))) {
+  if (whitelist && (!message.guild || !guildID.includes(message.guild.id))) {
     return;
   }
+
   if (message.author.bot) {
     return;
   }
@@ -96,9 +97,9 @@ client.on(Events.MessageCreate, (message) => {
   }
 
   if (
-    message.content.match(
-      /https\:\/\/[x|twitter]*.com\/[a-zA-Z0-9_]*\/status\/[0-9]*/,
-    )
+      message.content.match(
+          /https\:\/\/[x|twitter]*.com\/[a-zA-Z0-9_]*\/status\/[0-9]*/,
+      )
   ) {
     try {
       m = message.content.replace(/https:\/\/x.com/g, 'https://twitter.com');
@@ -108,8 +109,8 @@ client.on(Events.MessageCreate, (message) => {
       rm = m.replace(/twitter.com/g, 'fxtwitter.com');
       // console.log(`[${currentTime}] Replaced to fxtwitter.com: ${rm}`);
       alignedConsoleLog(
-        `[${currentTime}] Replaced to fxtwitter.com: ${rm}`,
-        50,
+          `[${currentTime}] Replaced to fxtwitter.com: ${rm}`,
+          50,
       );
 
       // srm = rm.match(/https:\/\/fxtwitter.com\/[a-zA-Z0-9_]*\/status\/[0-9]*/g);
@@ -121,15 +122,15 @@ client.on(Events.MessageCreate, (message) => {
 
       sendReplacedURL(message, rm);
       console.log(
-        `[${currentTime}] Replied to ${message.author.tag} (${message.author.id})` +
+          `[${currentTime}] Replied to ${message.author.tag} (${message.author.id})` +
           '\n',
       );
     } catch (error) {
       console.error(error);
       message.reply({
         content:
-          'an error has occured! please contact to developer.\n' +
-          'unknown error 2.',
+            'an error has occured! please contact to developer.\n' +
+            'unknown error 2.',
         allowedMentions: { repliedUser: false },
       });
     }

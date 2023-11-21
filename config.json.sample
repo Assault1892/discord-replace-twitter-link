@@ -1,5 +1,5 @@
 {
-  "token": "paste your token here",
-  "whitelist": false,
-  "serverId: ["",""]
+  "token": "",
+  "guildID": ["",""],
+  "whitelist": false
 }
