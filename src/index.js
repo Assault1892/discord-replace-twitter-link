@@ -1,5 +1,5 @@
 const { Client, Events, GatewayIntentBits } = require('discord.js');
-const { token } = require('./../config.json');
+const { token, serverId } = require('./../config.json');
 const { DateTime } = require('luxon');
 
 const client = new Client({
@@ -85,7 +85,8 @@ client.once(Events.ClientReady, (c) => {
 
 client.on(Events.MessageCreate, (message) => {
 /*
-  if (!message.guild || !['123456789012345678', '123456789012345678'].includes(message.guild.id)) {
+client.on(Events.MessageCreate, (message) => {
+  if (!message.guild || !serverId.includes(message.guild.id)) {
     return;
   }
 */
