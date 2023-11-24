@@ -34,6 +34,14 @@ https://discord.com/api/oauth2/authorize?client_id=1163327448910401566&permissio
 
 お好みで `$ pm2 start npm --name dtlr -- start ` とかでデーモン化してみてもいいとおもいます
 
+## ホワイトリストの設定したいんだけど
+
+何らかの事情で「特定のサーバーでのみ動作させたい」という場合にどうぞ
+
+1. `config.json` の中にある `guildID` の中にホワイトリストに入れたいサーバーのIDを入れます
+2. `whitelist` を `true` にします
+3. おわり
+
 ### 更新したいんだけど
 
 1. `git pull` します
