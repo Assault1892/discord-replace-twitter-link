@@ -67,5 +67,5 @@ Docker Compose V2のみ動作します
 やる気がある時に直します
 
 開発環境: Windows 10 22H2, Node.js 20.7.0, discord.js 14.13.0  
-サーバー: Raspberry Pi 4, Ubuntu 22.04.3, Node.js 20.7.0
+サーバー: Raspberry Pi 4, Ubuntu 22.04.3, Node.js 20.7.0  
 Docker Compose環境: NEC Express5800/R120f-1E, Debian12.2, Docker Compose version v2.21.0
