@@ -41,6 +41,26 @@ https://discord.com/api/oauth2/authorize?client_id=1163327448910401566&permissio
 3. `npm start` します
 4. おわり
 
+## セルフホストしたいんだけど Docker Compose編
+
+Docker Compose V2のみ動作します
+
+1. `git clone` します
+2. `cp config.json.sample config.json` します
+3. `config.json` の中にある `token` に Bot の Token を入れます
+4. `cp docker-compose.yml.sample docker-compose.yml` します
+5. (Optional) `docker-compose.yml` の設定を変更します
+6. `sudo docker compose build` します
+7. `sudo docker compose up -d` で実行します
+8. おわり
+
+### 更新したいんだけど Docker Compose編
+
+1. `git pull` します
+2. `sudo docker compose build` します
+3. `sudo docker compose up -d` で実行します
+4. おわり
+
 ## なんか壊れたんだけど助けて
 
 なんかあったら**必ず Node.js と discord.js のバージョンを添えて**Issue 立てるか[私の Discord サーバー](https://discord.gg/XprScgmYna)に入って教えてください  
@@ -48,3 +68,4 @@ https://discord.com/api/oauth2/authorize?client_id=1163327448910401566&permissio
 
 開発環境: Windows 10 22H2, Node.js 20.7.0, discord.js 14.13.0  
 サーバー: Raspberry Pi 4, Ubuntu 22.04.3, Node.js 20.7.0
+Docker Compose環境: NEC Express5800/R120f-1E, Debian12.2, Docker Compose version v2.21.0
