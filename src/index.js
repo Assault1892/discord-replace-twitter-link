@@ -1,5 +1,5 @@
 const {Client, Events, GatewayIntentBits} = require('discord.js');
-const {token, guildID, whitelist} = require('./../config.json');
+const {token, guildID, whitelist, mode} = require('./../config.json');
 const {DateTime} = require('luxon');
 
 const client = new Client({
@@ -62,8 +62,7 @@ const sendReplacedURL = async (message, rm) => {
 };
 
 async function getWebhookInChannel(channel) {
-    const webhook = webhooksCache.get(channel.id) ?? (await getWebhook(channel));
-    return webhook;
+    return webhooksCache.get(channel.id) ?? (await getWebhook(channel));
 }
 
 async function getWebhook(channel) {
@@ -97,27 +96,21 @@ client.on(Events.MessageCreate, (message) => {
 
     if (
         message.content.match(
-            /https\:\/\/[x|twitter]*.com\/[a-zA-Z0-9_]*\/status\/[0-9]*/,
+            /https:\/\/[x|twitter]*.com\/[a-zA-Z0-9_]*\/status\/[0-9]*/,
         )
     ) {
         try {
+            if (mode === 'fx') {
+                replacedUrl = 'fxtwitter.com';
+            } else if (mode === 'vx') {
+                replacedUrl = 'vxtwitter.com';
+            }
             m = message.content.replace(/https:\/\/x.com/g, 'https://twitter.com');
 
-            // console.log(`[${currentTime}] Twitter URL found: ${m}`)
             alignedConsoleLog(`[${currentTime}] Twitter URL found: ${m}`, 42);
-            rm = m.replace(/twitter.com/g, 'fxtwitter.com');
-            // console.log(`[${currentTime}] Replaced to fxtwitter.com: ${rm}`);
-            alignedConsoleLog(
-                `[${currentTime}] Replaced to fxtwitter.com: ${rm}`,
-                50,
-            );
+            rm = m.replace(/twitter.com/g, replacedUrl);
 
-            // srm = rm.match(/https:\/\/fxtwitter.com\/[a-zA-Z0-9_]*\/status\/[0-9]*/g);
-            // alignedConsoleLog(`[${currentTime}] Replaced links: ${srm}`, 50);
-            // tssrm = srm.toString();
-            // frtssrm = tssrm.replace(/,/g, "\n");
-            // alignedConsoleLog(`[${currentTime}] Replaced links preview: ${frtssrm}`, 47);
-            // message.reply({content: "found Twitter link(s)! replaced urls...:\n" + frtssrm, allowedMentions: { repliedUser: false }});
+            alignedConsoleLog(`[${currentTime}] Replaced to ${replacedUrl}: ${rm}`, 50);
 
             sendReplacedURL(message, rm);
             console.log(
