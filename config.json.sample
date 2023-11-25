@@ -2,5 +2,5 @@
   "token": "paste your token here",
   "guildID": ["",""],
   "whitelist": false,
-  "mode": fx
+  "mode": "fx"
 }
