@@ -42,10 +42,6 @@ https://discord.com/api/oauth2/authorize?client_id=1163327448910401566&permissio
 2. `whitelist` を `true` にします
 3. おわり
 
-## fxtwitterじゃなくてvxtwitterにしたいんだけど
-1. `config.json` の中にある `mode` の中をvxに置き換えます
-2. おわり
-
 ### 更新したいんだけど
 
 1. `git pull` します
