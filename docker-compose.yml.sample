@@ -1,0 +1,5 @@
+services:
+   discord-replace-twitter-link:
+     build: .
+     container_name: discord-replace-twitter-link
+     restart: always
