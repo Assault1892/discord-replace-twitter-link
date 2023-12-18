@@ -41,7 +41,7 @@ const sendReplacedURL = async (message, rm) => {
         } else {
             try {
                 message.channel.send({
-                    content: `[${currentTime}] og sender: ${message.member.displayName} (${message.author.id})\n${rm}`,
+                    content: `[${currentTime}] ${message.member.displayName}: \n${rm}`,
                     allowedMentions: {repliedUser: false},
                 });
             } catch {
