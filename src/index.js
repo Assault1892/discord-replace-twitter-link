@@ -46,15 +46,14 @@ const sendReplacedURL = async (message, rm) => {
                 });
             } catch {
                 console.log(
-                    'an error has occurred! please contact to developer.\n' +
-                    'error: cannot reply to thread.',
+                    'エラーが発生しました！スレッドには返信できません...！'
                 );
             }
         }
     } catch {
         message.channel.send(
-            'an error has occurred! please contact to developer.\n' +
-            'error: cannot send message, maybe missing permission?',
+            'エラーが発生しました！開発者に連絡してください！\n' +
+            'メッセージの送信に失敗しました。権限が足りないかも？',
         );
     }
 
@@ -121,8 +120,8 @@ client.on(Events.MessageCreate, (message) => {
             console.error(error);
             message.reply({
                 content:
-                    'an error has occurred! please contact to developer.\n' +
-                    'error: cannot send message, maybe missing permission?',
+                    'エラーが発生しました！メッセージの送信に失敗しました。\n' +
+                    '権限が足りないか、もしかしたら不明なエラーかもしれません。開発者に連絡してください！',
                 allowedMentions: {repliedUser: false},
             });
         }
