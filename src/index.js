@@ -54,7 +54,7 @@ const sendReplacedURL = async (message, rm) => {
     } catch {
         message.channel.send(
             'an error has occurred! please contact to developer.\n' +
-            'error: unknown error 1.',
+            'error: cannot send message, maybe missing permission?',
         );
     }
 
@@ -122,7 +122,7 @@ client.on(Events.MessageCreate, (message) => {
             message.reply({
                 content:
                     'an error has occurred! please contact to developer.\n' +
-                    'unknown error 2.',
+                    'error: cannot send message, maybe missing permission?',
                 allowedMentions: {repliedUser: false},
             });
         }
