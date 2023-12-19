@@ -57,7 +57,11 @@ const sendReplacedURL = async (message, rm) => {
         );
     }
 
-    message.delete(message);
+    try { message.delete(message); } 
+        catch(error) {  console.log(error);
+                        message.channel.send(
+                            'エラーが発生しました！\n' +
+                            'メッセージの削除に失敗しました。権限が足りないか、既に同じBotが動いているかも？',)}
 };
 
 async function getWebhookInChannel(channel) {
