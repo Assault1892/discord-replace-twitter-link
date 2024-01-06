@@ -10,7 +10,7 @@ Twitter の URL (`twitter.com`, `x.com`) を[FixTweet](https://github.com/FixTwe
 
 https://github.com/Assault1892/discord-replace-twitter-link/assets/34514603/bc8112f9-5e29-45ef-b0a3-3f812006d981
 
-**2023/10/19 現在、スレッド内で URL の置き換えが動かない場合は Bot の再導入をお願いします。導入用 URL の権限設定ミスをしていました...。**
+**2023/10/19 以前にBotを参加させた方で、スレッド内で URL の置き換えが動かない場合は Bot の再導入をお願いします。導入用 URL の権限設定ミスをしていました...。**
 
 ## つかいかた
 
@@ -20,6 +20,14 @@ https://github.com/Assault1892/discord-replace-twitter-link/assets/34514603/bc81
 また Bot の権限より上の権限で制御されているチャンネルなどでは動作しません  
 お手数をおかけしますが Bot 専用の権限を割り当てるなどお願いします  
 https://discord.com/api/oauth2/authorize?client_id=1163327448910401566&permissions=536882176&scope=bot
+
+## 利用規約とかはどこよ
+
+利用規約: https://assault1892.github.io/posts/dtlr_tos  
+プライバシーポリシー: https://assault1892.github.io/posts/dtlr_privacypolicy
+
+自分のサーバーに入れる場合は必ず上記利用規約とプライバシーポリシーをご確認ください。  
+**Botを導入した時点で利用規約とプライバシーポリシーに同意したものとみなします。**
 
 ## セルフホストしたいんだけど
 
@@ -50,6 +58,7 @@ https://discord.com/api/oauth2/authorize?client_id=1163327448910401566&permissio
 3. おわり
 
 ## fxtwitterじゃなくてvxtwitterにしたいんだけど
+
 1. `config.json` の中にある `mode` の中をvxに置き換えます
 2. おわり
 
