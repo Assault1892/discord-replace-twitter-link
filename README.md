@@ -6,7 +6,9 @@
 <a href="https://discord.js.org"><img alt="Static Badge" src="https://img.shields.io/badge/discord.js-gray?style=for-the-badge&logo=node.js">
 </p>
 
-Twitter の URL (`twitter.com`, `x.com`) を[FixTweet](https://github.com/FixTweet/FixTweet)の URL (`fxtwitter.com`) に置き換える Bot です。
+Twitter の URL (`twitter.com`, `x.com`) を[FixTweet](https://github.com/FixTweet/FixTweet)の URL (`fxtwitter.com`) に置き換える Bot です。  
+
+## 2024/01/20時点で、公式のTwitterの埋め込みが復活したことを確認したため、一時的にBotを止めています。
 
 https://github.com/Assault1892/discord-replace-twitter-link/assets/34514603/bc8112f9-5e29-45ef-b0a3-3f812006d981
 
